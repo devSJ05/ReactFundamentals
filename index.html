@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+    <link rel="stylesheet" href="./app.css"/>
+</head>
+<body>
+    <div id="root">
+    </div>
+    <!-- <script>
+        // use plain javascript to render heading in webpage
+        // all these document, createElement, innerHtml are ready to use api's that browser gives with the help of the javascript engine
+        const heading = document.createElement("h1");
+        heading.innerHTML = "Hello World";
+        const root = document.getElementById("root");
+        root.appendChild(heading);
+    </script> -->
+
+    <!-- injected react using cdn -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- use react to render header -->
+    <script src="./app.js">
+        // //created an element
+        // const heading = React.createElement("h1", {}, "Hello React");
+        // //created root
+        // const root = ReactDOM.createRoot(document.getElementById("root"));
+        // // rendered the element in root
+        // root.render(heading);
+    </script>
+
+</body>
+</html>
