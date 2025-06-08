@@ -18,12 +18,15 @@
         root.appendChild(heading);
     </script> -->
 
-    <!-- injected react using cdn -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- injected react using cdn. We shouldn't use this way it is costlier operation to fetch the concerned files from CDN. It becomes easier
+    if it is installed in node_modules only. 
+    
+    -->
+    <!-- <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script> -->
 
     <!-- use react to render header -->
-    <script src="./app.js">
+    <script type="module" src="./app.js">
         // //created an element
         // const heading = React.createElement("h1", {}, "Hello React");
         // //created root

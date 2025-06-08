@@ -1,0 +1,31 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "learning react",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devSJ05/ReactFundamentals.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "shardul joshi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devSJ05/ReactFundamentals/issues"
+  },
+  "homepage": "https://github.com/devSJ05/ReactFundamentals#readme",
+  "devDependencies": {
+    "parcel": "^2.15.2"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "browserlist":[
+    "last 2 versions"
+  ]
+}
