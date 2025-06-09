@@ -9,9 +9,13 @@ const SecondComponent = () => {
 };
 
 // react component: two types of components - Functional : New & Class based : Old
+// nesting components is known as component composition. A functional component is a javascript function that returns jsx.
 export const FirstComponent = () => {
   return (
     <div>
+      {/* inside curly braces you can write javascript code */}
+      <p>{12 + 34}</p>
+      {jsx}
       <h1>My first functional component</h1>
       <SecondComponent />
     </div>
