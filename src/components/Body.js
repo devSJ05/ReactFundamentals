@@ -1,33 +1,49 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { RestaurantCard } from './RestaurantCard';
 
 export const Body = () => {
-  const data = [
-    {
-      name: 'Meghana Foods',
-      cuisine: 'Biryani, North Indian',
-      rating: '4.4',
-      eta: '38 mins',
-    },
-    {
-      name: 'Dominos',
-      cuisine: 'Burgers, Pizzas',
-      rating: '4.4',
-      eta: '38 mins',
-    },
-    {
-      name: 'KFC',
-      cuisine: 'Burgers, Fried',
-      rating: '3.8',
-      eta: '38 mins',
-    },
-  ];
+  // const data = [
+  //   {
+  //     name: 'Meghana Foods',
+  //     cuisine: 'Biryani, North Indian',
+  //     rating: '4.4',
+  //     eta: '38 mins',
+  //   },
+  //   {
+  //     name: 'Dominos',
+  //     cuisine: 'Burgers, Pizzas',
+  //     rating: '4.4',
+  //     eta: '38 mins',
+  //   },
+  //   {
+  //     name: 'KFC',
+  //     cuisine: 'Burgers, Fried',
+  //     rating: '3.8',
+  //     eta: '38 mins',
+  //   },
+  // ];
 
   // creation of first state variable
-  const [list, setList] = useState(data);
+  const [restaurantsInfo, setRestaurantsInfo] = useState([]);
 
   const filterTopRestaurants = () => {
-    setList(list.filter((res) => res.rating > 4));
+    setRestaurantsInfo(restaurantsInfo.filter((res) => res.info.avgRating > 4));
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetch(
+      'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9720888&lng=77.694364&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'
+    );
+
+    const json = await data.json();
+    const restaurantData =
+      json.data.cards['4']['card'].card.gridElements.infoWithStyle.restaurants;
+
+    setRestaurantsInfo(restaurantData);
   };
 
   return (
@@ -38,7 +54,7 @@ export const Body = () => {
           <button onClick={filterTopRestaurants}>Top rated restaurants</button>
         </div>
         <div>
-          <RestaurantCard restaurantData={list} />
+          <RestaurantCard restaurants={restaurantsInfo} />
         </div>
       </div>
     </>
