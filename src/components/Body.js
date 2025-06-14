@@ -2,27 +2,6 @@ import { useEffect, useState } from 'react';
 import { RestaurantCard } from './RestaurantCard';
 
 export const Body = () => {
-  // const data = [
-  //   {
-  //     name: 'Meghana Foods',
-  //     cuisine: 'Biryani, North Indian',
-  //     rating: '4.4',
-  //     eta: '38 mins',
-  //   },
-  //   {
-  //     name: 'Dominos',
-  //     cuisine: 'Burgers, Pizzas',
-  //     rating: '4.4',
-  //     eta: '38 mins',
-  //   },
-  //   {
-  //     name: 'KFC',
-  //     cuisine: 'Burgers, Fried',
-  //     rating: '3.8',
-  //     eta: '38 mins',
-  //   },
-  // ];
-
   // creation of first state variable
   const [restaurantsInfo, setRestaurantsInfo] = useState([]);
 
