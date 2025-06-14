@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { RestaurantCard } from './RestaurantCard';
+import Shimmer from './Shimmer';
 
 export const Body = () => {
   // creation of first state variable
@@ -24,6 +25,10 @@ export const Body = () => {
 
     setRestaurantsInfo(restaurantData);
   };
+
+  if (restaurantsInfo.length === 0) {
+    return <Shimmer />;
+  }
 
   return (
     <>
