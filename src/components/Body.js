@@ -5,6 +5,8 @@ import Shimmer from './Shimmer';
 export const Body = () => {
   // creation of first state variable
   const [restaurantsInfo, setRestaurantsInfo] = useState([]);
+  const [searchText, setSearchText] = useState('');
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
 
   const filterTopRestaurants = () => {
     setRestaurantsInfo(restaurantsInfo.filter((res) => res.info.avgRating > 4));
@@ -24,6 +26,15 @@ export const Body = () => {
       json.data.cards['4']['card'].card.gridElements.infoWithStyle.restaurants;
 
     setRestaurantsInfo(restaurantData);
+    setFilteredRestaurants(restaurantData);
+  };
+
+  const filterRestaurants = () => {
+    console.log('Searching for:', searchText);
+    const searchedRestaurants = restaurantsInfo.filter((restaurant) =>
+      restaurant.info.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setFilteredRestaurants(searchedRestaurants);
   };
 
   return (
@@ -33,13 +44,24 @@ export const Body = () => {
       ) : (
         <div className='body'>
           <div className='search'>
-            <h3>Search</h3>
+            <div className='search-container'>
+              <input
+                type='text'
+                placeholder='Search for restaurants...'
+                className='search-input'
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
+              />
+              <button className='search-button' onClick={filterRestaurants}>
+                Search
+              </button>
+            </div>
             <button onClick={filterTopRestaurants}>
               Top rated restaurants
             </button>
           </div>
           <div>
-            <RestaurantCard restaurants={restaurantsInfo} />
+            <RestaurantCard restaurants={filteredRestaurants} />
           </div>
         </div>
       )}
