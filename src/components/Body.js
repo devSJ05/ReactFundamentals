@@ -26,21 +26,23 @@ export const Body = () => {
     setRestaurantsInfo(restaurantData);
   };
 
-  if (restaurantsInfo.length === 0) {
-    return <Shimmer />;
-  }
-
   return (
     <>
-      <div className='body'>
-        <div className='search'>
-          <h3>Search</h3>
-          <button onClick={filterTopRestaurants}>Top rated restaurants</button>
+      {restaurantsInfo.length === 0 ? (
+        <Shimmer />
+      ) : (
+        <div className='body'>
+          <div className='search'>
+            <h3>Search</h3>
+            <button onClick={filterTopRestaurants}>
+              Top rated restaurants
+            </button>
+          </div>
+          <div>
+            <RestaurantCard restaurants={restaurantsInfo} />
+          </div>
         </div>
-        <div>
-          <RestaurantCard restaurants={restaurantsInfo} />
-        </div>
-      </div>
+      )}
     </>
   );
 };
